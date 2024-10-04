@@ -1,0 +1,41 @@
+#isso é um comentário em YAML
+#3 hífens definir o começo de uma diretiva
+
+stages:
+  - obter_ingredientes
+  - verificar_ingredientes
+
+#nosso primeiro Job
+#nome do Job
+#feat: obtem ingredientes do bolo
+obter ingredientes do bolo:
+  stage: obter_ingredientes
+  script:
+    - mkdir build
+    - cd build
+    - touch bolo.txt
+    - echo "2 xícaras de farinha de trigo" >> bolo.txt
+    - echo "2 xícaras de açúcar" >> bolo.txt
+    - echo "2 colheres de manteiga" >> bolo.txt
+    - echo "3 ovos" >> bolo.txt
+    - echo "1 xícara de leite" >> bolo.txt
+    - echo "1 colher de sopa de fermento" >> bolo.txt
+  artifacts:
+    paths:
+      - build/
+
+#feat: define dois stages
+#job verifica se todos os ingredientes existem
+#feat: verifica os ingredientes
+verificar lista de ingredientes:
+  stage: verificar_ingredientes
+  script:
+    - NOME_ARQ=bolo.txt
+    - test -f build/$NOME_ARQ
+    - cd build
+    - grep "farinha de trigo" $NOME_ARQ
+    - grep "açúcar" $NOME_ARQ
+    - grep "manteiga" $NOME_ARQ
+    - grep "ovos" $NOME_ARQ
+    - grep "leite" $NOME_ARQ
+    - grep "fermento" $NOME_ARQ
