@@ -23,7 +23,7 @@ const App = () => {
   const textoDoRotulo = 'Nome:'
   const obterTextoDoBotao = () => "Enviar"
   const aoClicar = () => alert('clicou')
-  return <div
+  return <div 
     style={{margin: 'auto', width: 768, backgroundColor: '#EEE', padding: 12, borderRadius: 8}}>
       <label className='rotulo' htmlFor='nome' style={{display: 'block', marginBottom: 4}}>
         {textoDoRotulo}
