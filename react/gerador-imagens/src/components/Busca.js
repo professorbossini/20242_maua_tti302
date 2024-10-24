@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import { InputText } from 'primereact/inputtext'
 import { Button } from 'primereact/button'
 
+// npm install react-dotenv
+
 export default class Busca extends Component{
     state = {
         termoDeBusca:""
@@ -12,6 +14,7 @@ export default class Busca extends Component{
     }
     onFormSubmit = (event) => {
         event.preventDefault()
+        this.props.onBuscaRealizada(this.state.termoDeBusca)
     }
     render(){
         return(
